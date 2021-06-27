@@ -18,6 +18,7 @@
 		D76493E22687527A00962AAC /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = D76493E12687527A00962AAC /* cities.json */; };
 		D76493E8268752DB00962AAC /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76493E7268752DB00962AAC /* CityTableViewCell.swift */; };
 		D76493EE2687532A00962AAC /* TableViewDatasourceAndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76493ED2687532A00962AAC /* TableViewDatasourceAndDelegate.swift */; };
+		D76493F32687AEA300962AAC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76493F22687AEA300962AAC /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		D76493E12687527A00962AAC /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		D76493E7268752DB00962AAC /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		D76493ED2687532A00962AAC /* TableViewDatasourceAndDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDatasourceAndDelegate.swift; sourceTree = "<group>"; };
+		D76493F22687AEA300962AAC /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				D76493BC26874F7900962AAC /* CitiesListViewController.swift */,
+				D76493F22687AEA300962AAC /* MapViewController.swift */,
 				D76493E6268752B300962AAC /* Cells */,
 			);
 			path = Controllers;
@@ -313,6 +316,7 @@
 				D76493BD26874F7900962AAC /* CitiesListViewController.swift in Sources */,
 				D76493D0268751D100962AAC /* CityModel.swift in Sources */,
 				D76493EE2687532A00962AAC /* TableViewDatasourceAndDelegate.swift in Sources */,
+				D76493F32687AEA300962AAC /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

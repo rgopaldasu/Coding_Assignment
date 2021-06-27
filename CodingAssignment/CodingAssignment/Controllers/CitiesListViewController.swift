@@ -13,6 +13,14 @@ class CitiesListViewController: UIViewController {
         let tableview = UITableView()
         return tableview
     } ()
+    
+    let searchbar: UISearchBar = {
+        let searchbar = UISearchBar ()
+        searchbar.showsCancelButton = true
+        searchbar.sizeToFit()
+        return searchbar
+    } ()
+    
     var citiesViewModel: CitiesListViewModel!
     private var dataSource: TableViewDataSourceAndDelegate<CityTableViewCell, CityModel>!
     
@@ -21,6 +29,8 @@ class CitiesListViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.tableViewSetup()
         self.initializingCitiesListViewModel()
+        self.navigationItem.titleView = searchbar
+        self.searchbar.delegate = self
     }
     
     // Added constraints to tableview and registerd Tableviewcell
@@ -53,6 +63,9 @@ class CitiesListViewController: UIViewController {
         
         // Callback to tableview row selected.
         self.dataSource.rowSelected = {(cityObj) in
+            let mapVC = MapViewController ()
+            mapVC.citiyModel = cityObj
+            self.navigationController?.pushViewController(mapVC, animated: true)
         }
         
         // Assign datasource,delegate and reloading tableview.
@@ -61,5 +74,18 @@ class CitiesListViewController: UIViewController {
             self.tblView.delegate = self.dataSource
             self.tblView.reloadData()
         }
+    }
+}
+
+// MARK: Searchbar delegate methods.
+extension CitiesListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        citiesViewModel.reloadWithFilter(searchString: searchbar.text ?? "")
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchbar.text = ""
+        citiesViewModel.reloadWithFilter(searchString: "")
+        self.searchbar.resignFirstResponder()
     }
 }
