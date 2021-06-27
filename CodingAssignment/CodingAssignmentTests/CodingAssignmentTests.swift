@@ -10,24 +10,38 @@ import XCTest
 
 class CodingAssignmentTests: XCTestCase {
 
+    private var citiesViewModel = CitiesListViewModel()
+    private var mapVC = MapViewController()
+        
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.citiesViewModel.readJSONFromFile()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    // Testing CitiesList count matching with json file.
+    func testCitiesListCount () {
+        XCTAssertTrue(self.citiesViewModel.citiesList.count == 209557)
+        XCTAssertTrue(self.citiesViewModel.allCitiesList.count == 209557)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    // Testing the filter with provided string.
+    func testSearchCitiesListCountWithString () {
+        self.citiesViewModel.reloadWithFilter(searchString: "Lichtenrade")
+        XCTAssertTrue(self.citiesViewModel.citiesList.count == 1)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    // Testing the filter with empty string.
+    func testSearchCitiesListCountWithEmptyString () {
+        self.citiesViewModel.reloadWithFilter(searchString: "")
+        XCTAssertTrue(self.citiesViewModel.citiesList.count == 209557)
+    }
+    
+    // Testing mapview.
+    func testMapView () {
+        XCTAssertNotNil(mapVC.mapview)
+        XCTAssertNil(mapVC.citiyModel)
+        mapVC.addAnnotation()
+        XCTAssertFalse(mapVC.mapview.annotations.count == 1)
     }
 
 }
